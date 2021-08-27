@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  inventory_app:
+    container_name: inventory_app
+    image: postgres
+    environment:
+      POSTGRES_USER: "inventory_user"
+      POSTGRES_PASSWORD: "inventory123"
+      PGDATA: /data/inventory_app
+    volumes:
+      - inventory_app:/data/inventory_app
+    ports:
+      - "5434:5432"
+    networks:
+      - inventory_app_net
+    restart: unless-stopped
+
+networks:
+  inventory_app_net:
+    driver: bridge
+
+volumes:
+  inventory_app:
