@@ -8,7 +8,7 @@ class IsAuthenticatedCustom(BasePermission):
 
     def has_permission(self, request, _):
         try:
-            auth_token = request.Meta.get("HTTP_AUTHORIZATION", None)
+            auth_token = request.META.get("HTTP_AUTHORIZATION", None)
         except Exception:
             return False
         if not auth_token:
