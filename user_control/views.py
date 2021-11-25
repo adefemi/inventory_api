@@ -136,6 +136,6 @@ class UsersView(ModelViewSet):
     permission_classes = (IsAuthenticatedCustom, )
 
     def list(self, request):
-        users = self.queryset().filter(is_superuser=False)
+        users = self.queryset.filter(is_superuser=False)
         data = self.serializer_class(users, many=True).data
         return Response(data)
