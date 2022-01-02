@@ -286,7 +286,7 @@ class InventoryCSVLoaderView(ModelViewSet):
                         "name": row[2],
                         "price": row[3],
                         "photo": row[4],
-                        "added_by_id": request.user.id
+                        "created_by_id": request.user.id
                     }
                 )
         except csv.Error as e:
