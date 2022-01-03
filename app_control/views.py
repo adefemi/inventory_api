@@ -94,10 +94,10 @@ class ShopView(ModelViewSet):
             return self.queryset
 
         data = self.request.query_params.dict()
-        data.pop("page")
+        data.pop("page", None)
         keyword = data.pop("keyword", None)
 
-        results = self.queryset(**data)
+        results = self.queryset.filter(**data)
 
         if keyword:
             search_fields = (
