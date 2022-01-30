@@ -188,7 +188,7 @@ class SalePerformanceView(ModelViewSet):
             sum_of_item=Coalesce(
                 Sum("inventory_invoices__quantity"), 0
             )
-        ).order('-sum_of_item')[0:10]
+        ).order_by('-sum_of_item')[0:10]
 
         response_data = InventoryWithSumSerializer(items, many=True).data
         return Response(response_data)
